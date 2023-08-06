@@ -19,4 +19,10 @@ app.use(cors());
 const skillsRouter = require("./routes/skills");
 app.use("/skills", skillsRouter);
 
+const experiencesRouter = require("./routes/experiences");
+app.use("/experiences", experiencesRouter);
+
+const projectsRouter = require("./routes/projects");
+app.use("/projects", projectsRouter);
+
 app.listen(9000, () => console.log("Server has started."));
