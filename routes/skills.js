@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Skill } = require("../models/skill");
+const app = express();
 require("../models/image");
 
 app.use(
