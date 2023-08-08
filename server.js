@@ -14,35 +14,21 @@ db.on("error", (error) => console.log(error));
 db.once("open", () => console.log("Connected to MongoDB"));
 
 app.use(express.json());
+app.use(
+	"*",
+	cors({
+		origin: "https://dye-portfolio.onrender.com",
+		credentials: true,
+	})
+);
 
 const skillsRouter = require("./routes/skills");
-app.use(
-	"/skills",
-	skillsRouter,
-	cors({
-		origin: "https://dye-portfolio.onrender.com",
-		credentials: true,
-	})
-);
+app.use("/skills", skillsRouter);
 
 const experiencesRouter = require("./routes/experiences");
-app.use(
-	"/experiences",
-	experiencesRouter,
-	cors({
-		origin: "https://dye-portfolio.onrender.com",
-		credentials: true,
-	})
-);
+app.use("/experiences", experiencesRouter);
 
 const projectsRouter = require("./routes/projects");
-app.use(
-	"/projects",
-	projectsRouter,
-	cors({
-		origin: "https://dye-portfolio.onrender.com",
-		credentials: true,
-	})
-);
+app.use("/projects", projectsRouter);
 
 app.listen(process.env.PORT || 3000, () => console.log("Server has started."));
