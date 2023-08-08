@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(
 	cors({
 		origin: "https://dye-portfolio.onrender.com",
-		headers: ["Content-Type"],
+		methods: ["GET"],
 		credentials: true,
 	})
 );
