@@ -22,6 +22,16 @@ app.use(
 	})
 );
 
+const connectDB = async () => {
+	try {
+		const conn = await mongoose.connect(process.env.DATABASE_URL);
+		console.log(`MongoDB Connected: ${conn.connection.host}`);
+	} catch (error) {
+		console.log(error);
+		process.exit(1);
+	}
+};
+
 const experiencesRouter = require("./routes/experiences");
 app.use("/experiences", experiencesRouter);
 
@@ -31,4 +41,8 @@ app.use("/skills", skillsRouter);
 const projectsRouter = require("./routes/projects");
 app.use("/projects", projectsRouter);
 
-app.listen(process.env.PORT || 3000, () => console.log("Server has started."));
+connectDB().then(() => {
+	app.listen(PORT || 3000, () => {
+		console.log("listening for requests");
+	});
+});
