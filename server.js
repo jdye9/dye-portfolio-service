@@ -18,7 +18,6 @@ app.use(
 	cors({
 		origin: "https://dye-portfolio.onrender.com",
 		methods: ["GET"],
-		credentials: true,
 		allowedHeaders: [
 			"Content-Type",
 			"Authorization",
