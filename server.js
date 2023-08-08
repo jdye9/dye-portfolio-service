@@ -19,6 +19,7 @@ app.use(
 		origin: "https://dye-portfolio.onrender.com",
 		methods: ["GET"],
 		credentials: true,
+    allowedHeaders: allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'device-remember-token', 'Access-Control-Allow-Origin', 'Origin', 'Accept']
 	})
 );
 
