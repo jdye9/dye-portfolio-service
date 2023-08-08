@@ -14,21 +14,7 @@ db.on("error", (error) => console.log(error));
 db.once("open", () => console.log("Connected to MongoDB"));
 
 app.use(express.json());
-app.use(
-	cors({
-		origin: "https://dye-portfolio.onrender.com",
-		methods: ["GET"],
-		allowedHeaders: [
-			"Content-Type",
-			"Authorization",
-			"X-Requested-With",
-			"device-remember-token",
-			"Access-Control-Allow-Origin",
-			"Origin",
-			"Accept",
-		],
-	})
-);
+app.use(cors());
 
 const skillsRouter = require("./routes/skills");
 app.use("/skills", skillsRouter);
