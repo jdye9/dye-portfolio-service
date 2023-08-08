@@ -4,28 +4,22 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-mongoose.connect(process.env.DATABASE_URL, {
-	useNewUrlParser: true,
-	dbName: "Portfolio-Site",
-});
-
-const db = mongoose.connection;
-db.on("error", (error) => console.log(error));
-db.once("open", () => console.log("Connected to MongoDB"));
-
 app.use(express.json());
 
 app.use(
 	cors({
-		origin: "https://dye-portfolio.onrender.com",
+		origin: "https://dye-portfolio.vercel.app",
 		credentials: true,
 	})
 );
 
 const connectDB = async () => {
 	try {
-		const conn = await mongoose.connect(process.env.DATABASE_URL);
-		console.log(`MongoDB Connected: ${conn.connection.host}`);
+		const conn = await mongoose.connect(process.env.DATABASE_URL, {
+			useNewUrlParser: true,
+			dbName: "Portfolio-Site",
+		});
+		console.log(`MongoDB Connected`, conn.connection.host);
 	} catch (error) {
 		console.log(error);
 		process.exit(1);
@@ -42,7 +36,7 @@ const projectsRouter = require("./routes/projects");
 app.use("/projects", projectsRouter);
 
 connectDB().then(() => {
-	app.listen(PORT || 3000, () => {
+	app.listen(process.env.PORT, () => {
 		console.log("listening for requests");
 	});
 });
