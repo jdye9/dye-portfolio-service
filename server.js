@@ -14,7 +14,10 @@ db.once("open", () => console.log("Connected to MongoDB"));
 
 app.use(express.json());
 app.use((req, res, next) => {
-	res.setHeader("Access-Control-Allow-Origin", "https://your-frontend.com");
+	res.setHeader(
+		"Access-Control-Allow-Origin",
+		"https://dye-portfolio.onrender.com"
+	);
 	res.setHeader(
 		"Access-Control-Allow-Methods",
 		"GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS,CONNECT,TRACE"
