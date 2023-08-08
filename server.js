@@ -29,4 +29,4 @@ app.use("/experiences", experiencesRouter);
 const projectsRouter = require("./routes/projects");
 app.use("/projects", projectsRouter);
 
-app.listen(9000, () => console.log("Server has started."));
+app.listen(process.env.PORT || 3000, () => console.log("Server has started."));
