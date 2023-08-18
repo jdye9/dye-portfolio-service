@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema(
 	{
-		_id: {
-			type: mongoose.Types.ObjectId,
-			default: new mongoose.Types.ObjectId(),
-			required: true,
-		},
 		title: { type: String, required: true },
 		description: { type: String, required: true },
 		media: {
