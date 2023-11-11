@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.use(
 	cors({
-		origin: "https://dye-portfolio.vercel.app",
+		origin: process.env.CORS_FRONTEND_URL,
 		credentials: true,
 	})
 );
