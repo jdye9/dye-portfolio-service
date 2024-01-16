@@ -5,7 +5,10 @@ require("../models/image");
 require("../models/video");
 
 router.get("/", async (req, res) => {
-	const projects = await Project.find({}).populate("media").exec();
+	const projects = await Project.find({})
+		.populate("media.dark")
+		.populate("media.light")
+		.exec();
 	res.send(projects);
 });
 
