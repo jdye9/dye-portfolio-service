@@ -19,6 +19,7 @@ const connectDB = async () => {
 			useNewUrlParser: true,
 			dbName: "Portfolio-Site",
 			tls: true,
+			ssl: true,
 		});
 		console.log(`MongoDB Connected`, conn.connection.host);
 	} catch (error) {
