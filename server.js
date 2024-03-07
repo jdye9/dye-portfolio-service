@@ -18,7 +18,6 @@ const connectDB = async () => {
 		const conn = await mongoose.connect(process.env.DATABASE_URL, {
 			useNewUrlParser: true,
 			dbName: "Portfolio-Site",
-			server: { ssl: true },
 		});
 		console.log(`MongoDB Connected`, conn.connection.host);
 	} catch (error) {
